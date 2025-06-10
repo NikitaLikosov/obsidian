@@ -126,6 +126,34 @@ class RGA {
     };
     return traverse('head');
   }
+  merge(externalRGA: RGA) {
+    for (const externalId in externalRGA.elements) {
+      if (!this.elements[externalId]) {
+        const externalElem = externalRGA.elements[externalId];
+        // Вставляем отсутствующий элемент
+        this.insert(externalElem.id, externalElem.value);
+        // Обновляем статус удаления
+        if (externalElem.deleted) {
+          this.delete(externalId);
+        }
+      }
+    }
+    
+    // Обновляем связи next с сортировкой по ID
+    for (const id in this.elements) {
+      const elem = this.elements[id];
+      elem.next = [...new Set([...elem.next, ...(externalRGA.elements[id]?.next || [])])]
+        .sort((a, b) => this.compareIds(a, b));
+    }
+  }
+
+  private compareIds(a: string, b: string): number {
+    const [aTime, aUser] = a.split(',');
+    const [bTime, bUser] = b.split(',');
+    return aTime === bTime 
+      ? aUser.localeCompare(bUser)
+      : parseInt(aTime) - parseInt(bTime);
+  }
 }
 ```
 
