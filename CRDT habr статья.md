@@ -176,26 +176,27 @@ Yjs абстрагирует низкоуровневую логику CRDT че
 Yjs не привязан к конкретному протоколу. Существуют готовые провайдеры для различных сценариев: `y-websocket` для клиент-серверной архитектуры, `y-webrtc` для полностью P2P-синхронизации без центрального сервера, а также интеграции с другими протоколами. Эта гибкость позволяет выбрать наиболее подходящую архитектуру для приложения.
 
 ```js
-
 import * as Y from 'yjs'
 
-// Yjs documents are collections of
-// shared objects that sync automatically.
+// Документы Yjs — это коллекции
+// общих объектов, которые синхронизируются автоматически.
 const ydoc = new Y.Doc()
-// Define a shared Y.Map instance
+// Определяем общий экземпляр Y.Map
 const ymap = ydoc.getMap()
 ymap.set('keyA', 'valueA')
 
-// Create another Yjs document (simulating a remote user)
-// and create some conflicting changes
+// Создаём другой документ Yjs (симуляция удалённого пользователя)
+// и создаём некоторые конфликтующие изменения
 const ydocRemote = new Y.Doc()
 const ymapRemote = ydocRemote.getMap()
 ymapRemote.set('keyB', 'valueB')
 
+// Объединяем изменения с удалённого документа
 const update = Y.encodeStateAsUpdate(ydocRemote)
 Y.applyUpdate(ydoc, update)
-console.log(ymap.toJSON()) // => { keyA: 'valueA', keyB: 'valueB' }
 
+// Можно заметить, что изменения были объединены
+console.log(ymap.toJSON()) // => { keyA: 'valueA', keyB: 'valueB' }
 ```
 
 **6. Почему это не так сложно, как кажется**
