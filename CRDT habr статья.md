@@ -199,14 +199,7 @@ Y.applyUpdate(ydoc, update)
 // Можно заметить, что изменения были объединены
 console.log(ymap.toJSON()) // => { keyA: 'valueA', keyB: 'valueB' }
 ```
-
-**Заключение**
-- Куда копать дальше: ссылки на документацию, демо, обсуждения
-- Призыв попробовать Yjs в своём проекте
-
----
-
-**Примечание:**  
-План выстроен от простого к сложному, с акцентом на практику и снятие страха перед CRDT и Yjs.
-
-[^1]: 
+**Хотите погрузиться глубже?**
+- Официальная документация Yjs: [https://docs.yjs.dev/](https://docs.yjs.dev/)
+- Примеры использования Yjs: [https://docs.yjs.dev/api/examples](https://www.google.com/search?q=https://docs.yjs.dev/api/examples)
+- Блог Йозефа Горни (Joseph M. G. – создателя Yjs): [https://josephg.com/](https://josephg.com/)
