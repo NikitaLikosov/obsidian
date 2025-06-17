@@ -65,7 +65,7 @@ console.log(counterC.merge(counterB.merge(counterA)).value() === counterC.merge(
 const counterA = new GCounter('A');
 
 const counterB = new GCounter('B');
-counterB.inc(); // A: 1, B: 0
+counterB.inc(); // A: 0, B: 1
 
 counterA.merge(counterA.state);
 console.log(counterB.value()); // 1
@@ -126,7 +126,7 @@ class RGA {
     };
     return traverse('head');
   }
-  merge(externalRGA: RGA) {
+  merge(externalRGA) {
     for (const externalId in externalRGA.elements) {
       if (!this.elements[externalId]) {
         const externalElem = externalRGA.elements[externalId];
