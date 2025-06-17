@@ -202,4 +202,3 @@ console.log(ymap.toJSON()) // => { keyA: 'valueA', keyB: 'valueB' }
 **Хотите погрузиться глубже?**
 - Официальная документация Yjs: [https://docs.yjs.dev/](https://docs.yjs.dev/)
 - Примеры использования Yjs: [https://docs.yjs.dev/api/examples](https://www.google.com/search?q=https://docs.yjs.dev/api/examples)
-- Блог Йозефа Горни (Joseph M. G. – создателя Yjs): [https://josephg.com/](https://josephg.com/)
