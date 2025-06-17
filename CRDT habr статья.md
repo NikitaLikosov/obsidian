@@ -14,7 +14,7 @@ class GCounter {
   }
 
   inc() {
-    this.state[this.id] = (this.state[this.id] || 0) + 1;
+    this.state[this.id] += 1;
   }
 
   value() {
