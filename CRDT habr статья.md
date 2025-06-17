@@ -143,16 +143,8 @@ class RGA {
     for (const id in this.elements) {
       const elem = this.elements[id];
       elem.next = [...new Set([...elem.next, ...(externalRGA.elements[id]?.next || [])])]
-        .sort((a, b) => this.compareIds(a, b));
+        .sort((a, b) => a < b ? -1 : a > b ? 1 : 0 );
     }
-  }
-
-  private compareIds(a: string, b: string): number {
-    const [aTime, aUser] = a.split(',');
-    const [bTime, bUser] = b.split(',');
-    return aTime === bTime 
-      ? aUser.localeCompare(bUser)
-      : parseInt(aTime) - parseInt(bTime);
   }
 }
 ```
