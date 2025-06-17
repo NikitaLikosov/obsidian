@@ -131,7 +131,8 @@ class RGA {
       if (!this.elements[externalId]) {
         const externalElem = externalRGA.elements[externalId];
         // Вставляем отсутствующий элемент
-        this.insert(externalElem.id, externalElem.value);
+		const elem = new RGAElement(externalElem.id, externalElem.value);
+	    this.elements[externalElem.id] = elem;
         // Обновляем статус удаления
         if (externalElem.deleted) {
           this.delete(externalId);
